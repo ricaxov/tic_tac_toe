@@ -1,4 +1,1 @@
-import os
-
-while True:
-  
+# https://www.youtube.com/watch?v=SLgZhpDsrfc
