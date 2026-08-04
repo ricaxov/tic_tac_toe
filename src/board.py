@@ -26,6 +26,10 @@ class Board:
 
   # def get_mask_per_idx
 
+  # turn bit on
+  # turn bit off 
+  # helper functions ^^^
+
   def cell_state(self, cell_idx: int):
     state = (self.bitmask >> (cell_idx * 2)) & 0b11
 
