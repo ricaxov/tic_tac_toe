@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 """
-2 ^ pos
+2 ^ pos 
 
 1 2 3
 4 5 6
@@ -11,42 +11,23 @@ from dataclasses import dataclass
   67   89 1011
 1213 1415 1617
 
-00 -> unmarked (0)
-01 -> X (1)
-10 -> O (2)
-11 -> used for anding with whole bitmask (3)
+00 -> unmarked
+01 -> X
+10 -> O
+11 -> used for anding with whole bitmask
 
-1100
---11
+0000
 """
 
 @dataclass
 class Board: 
   bitmask: int = 0
 
-  # def get_mask_per_idx
-
-  def cell_state(self, cell_idx: int):
+  def cell_state(self, cell_idx):
     state = (self.bitmask >> (cell_idx * 2)) & 0b11
 
     return (" ", "X", "O")[state]
-
-
-  def update_cell(self, cell_idx: int, new_cell: str):
-    if cell_idx not in range(9) or new_cell not in (" ", "X", "O"):
-        return False
-
-    val = {" ": 0b00, "X": 0b01, "O": 0b10}[new_cell]
-    self.bitmask &= ~(0b11 << (cell_idx * 2))
-    self.bitmask |= (0b11 << (cell_idx * 2))
-
-    return True
-  
-  def check_winner(self):
-      # 01   23   45
-      #   67   89 1011
-      # 1213 1415 1617
-
+    
   def print_board(self):
     print(f" {self.cell_state(0)} | {self.cell_state(1)} | {self.cell_state(2)} ")
     print("---+---+---")
@@ -69,15 +50,4 @@ class Board:
   # runner eh a main 
 
 B = Board(2)
-
-resp = B.update_cell(1, "X")
-print(resp)
 B.print_board()
-
-B.update_cell(0, "O")
-B.print_board()
-
-print("asd")
-
-A = Board(1)
-A.print_board()
