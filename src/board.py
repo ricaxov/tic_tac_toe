@@ -29,6 +29,7 @@ class Board:
   # turn bit on
   # turn bit off 
   # helper functions ^^^
+  # def _turn_bit_off(self, bit_pos: int) -> None:
 
   def cell_state(self, cell_idx: int):
     state = (self.bitmask >> (cell_idx * 2)) & 0b11
